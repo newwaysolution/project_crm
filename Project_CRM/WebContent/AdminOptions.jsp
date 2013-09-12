@@ -22,6 +22,23 @@
 						<div class="lists">
 							<div class="lists_inner">
 								<dl>
+									<dt>Product Settings</dt>
+									<dd>
+										<div class="dd_top">
+											<ul class="dd_bottom">
+												<li><a href="CompanyController?action=AddProduct">Add New Product</a></li>
+												<li><a href="CompanyController?action=SearchProduct">Search Product</a></li>
+												<li><a href="#">Remove Product</a></li>
+												<li><a href="#"></a></li>
+												<li><a href="#"></a></li>
+												<li><a href="#"></a></li>
+												<li><a href="#"></a></li>
+												<li><a href="#"></a></li>	
+											</ul>
+										</div>
+									</dd>
+								</dl>
+								<dl>
 									<dt>Company Settings</dt>
 									<dd>
 										<div class="dd_top">
