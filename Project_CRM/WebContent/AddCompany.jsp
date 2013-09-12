@@ -2,6 +2,28 @@
 <%@include file="menu1.jsp" %>
 <%@include file="menu2.jsp" %>
 <!--[if !IE]>start content<![endif]-->
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+$(document).ready(function(){
+	$(".tooltip").hide();
+	$("#licenseStartDate").datepicker({ dateFormat: "dd-mm-yy" });
+	$("#licenseEndDate").datepicker({ dateFormat: "dd-mm-yy" });
+	
+	$("#companyName").blur(function(){
+		if($(this).val()==""){
+			$("#error1").show();
+		}
+		else{
+			$("#error1").hide();			
+		}
+	});
+});
+</script>
+</head>
+
 <div id="content">
 	<div class="inner">
 	<div class="section">
@@ -28,7 +50,7 @@
 			
 			<!--[if !IE]>start forms<![endif]-->
 			<div class="forms_wrapper">
-			<form action="CompanyController?action=AddEditSubmitCompany" method="post" class="search_form general_form">
+			<form id="addCompanyForm" action="CompanyController?action=AddEditSubmitCompany" method="post" class="search_form general_form">
 				<!--[if !IE]>start fieldset<![endif]-->
 				<fieldset>
 					<!--[if !IE]>start forms<![endif]-->
@@ -37,15 +59,27 @@
 					<!--[if !IE]>start row<![endif]-->
 					<div class="row">
 						<label>Company Code:</label>
+						<%  %>
 						<div class="inputs">
-							<span class="input_wrapper"><input class="text" name="CompanyCode" type="text" /></span>
-							<!-- <span class="system positive" style="display: none;">This is a positive message</span> -->
-						</div>
+							<span class="input_wrapper"><input class="text" name="companyCode" type="text" /></span>
+					<!--    <span class="system positive" style="display: none;">This is a positive message</span> -->
+    				</div> 
 					</div>
 					<div class="row">
 						<label>Company Name:</label>
 						<div class="inputs">
-							<span class="input_wrapper"><input class="text" name="CompanyName" type="text" /></span>
+							<span class="input_wrapper"><input class="text" name="companyName" id="companyName" type="text" /></span>
+							<div class="tooltip" id="error1">
+									        	<div class="tooltip_top">
+										     		<div class="tooltip_bottom">
+														<span class="pointer"></span>
+														<p class="first">
+														 This field is mandatory!
+														</p>
+											
+													</div>
+												</div>
+							</div>
 							<!-- <span class="system positive" style="display: none;">This is a positive message</span> -->
 						</div>
 					</div>
@@ -85,13 +119,13 @@
 					<div class="row">
 						<label>License Start Date:</label>
 						<div class="inputs">
-							<span class="input_wrapper"><input class="text" name="licenseStartDate" type="text" /></span>
+							<span class="input_wrapper"><input class="text" id="licenseStartDate" name="licenseStartDate" type="text" /></span>
 						</div>
 					</div>
 					<div class="row">
 						<label>License End Date:</label>
 						<div class="inputs">
-							<span class="input_wrapper"><input class="text" name="licenseEndDate" type="text" /></span>
+							<span class="input_wrapper"><input class="text" name="licenseEndDate" id="licenseEndDate" type="text" /></span>
 						</div>
 					</div>
 					
