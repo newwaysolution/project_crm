@@ -1552,7 +1552,7 @@ h3 {
 .tooltip {
 	width: 272px;
 	background: #f3f3f3 url(layout/tooltip_middle.gif) repeat-y;
-	float: right;
+	float: left;
 	color: #202020;
 }
 
@@ -1594,6 +1594,9 @@ h3 {
 	background:url(layout/arrow_indent.gif) no-repeat;
 	text-indent: 10px;
 	background-position: 0 10px;
+	color:red;
+	font-family:verdana;
+	font-size:13px;
 }
 /* end search */
 
