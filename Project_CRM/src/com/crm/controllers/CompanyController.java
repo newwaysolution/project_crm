@@ -1,7 +1,8 @@
 package com.crm.controllers;
 
 import java.io.IOException;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.crm.beans.CompanyBean;
 import com.crm.beans.CompanyManager;
 
+
 /**
  * Servlet implementation class CompanyController
  * @author Parth Soni 
@@ -20,7 +22,7 @@ import com.crm.beans.CompanyManager;
 public class CompanyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	String controllerStringName = "UserController";
+	String controllerStringName = "CompanyController";
 	
     public CompanyController() {
         super();
@@ -35,17 +37,122 @@ public class CompanyController extends HttpServlet {
 		String action = request.getParameter("action");
 		if(action.equalsIgnoreCase("AddCompany")) addCompanyHandler(request,response);
 		if(action.equalsIgnoreCase("EditCompany")) editCompanyHandler(request,response);
+		if(action.equalsIgnoreCase("CompanyList")) CompanyListHandler(request,response);
+		if(action.equalsIgnoreCase("CompanyDetails"))CompanyDetailsHandler(request,response);
 		if(action.equalsIgnoreCase("AddEditSubmitCompany")) addEditSubmitHandler(request,response);
 		if(action.equalsIgnoreCase("SearchCompany")) SearchCompanyHandler(request,response);
+		if(action.equalsIgnoreCase("CompanySearchResults")) CompanySearchResultsHandler(request,response);
+		if(action.equalsIgnoreCase("EnableDisableCompany")) EnableDisableHandler(request,response);
+		if(action.equalsIgnoreCase("EnableCompany")) EnableCompanyHandler(request,response);
+		if(action.equalsIgnoreCase("DisableCompany")) DisableCompanyHandler(request,response);
+	}
+
+	private void CompanyDetailsHandler(HttpServletRequest request,
+			HttpServletResponse response){
+		
+		ResultSet companyCode = (ResultSet) request.getAttribute("companyCode");
+		String code;
+		try {
+			code = companyCode.getString("Code");
+			ResultSet companyDetails=CompanyManager.getCompanyDetails(code);
+			request.setAttribute("companyDetails", companyDetails);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			forward("/CompanyDetails.jsp", request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void EnableDisableHandler(HttpServletRequest request,
+			HttpServletResponse response) {
+		try {
+			forward("/EnableDisable.jsp", request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
-	private void addCompanyHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		forward("/AddCompany.jsp", request, response);
+	private void EnableCompanyHandler(HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		
+	}
+
+	private void DisableCompanyHandler(HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		
+	}
+
+	private void CompanySearchResultsHandler(HttpServletRequest request, HttpServletResponse response) {
+		ResultSet companyList= CompanyManager.searchCompany(request);
+		request.setAttribute("companyList",companyList);
+		try {
+			forward("/CompanyList.jsp", request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void CompanyListHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		ResultSet companyList= CompanyManager.getAllCompanies();
+		request.setAttribute("companyList",companyList);
+		forward("/CompanyList.jsp", request, response);
+		
+	}
+
+	
+
+	private void addCompanyHandler(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			forward("/AddCompany.jsp", request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void editCompanyHandler(HttpServletRequest request, HttpServletResponse response) {
+		ResultSet companyCode=(ResultSet)request.getAttribute("companyCode");
+		String code;
+		try {
+			code = companyCode.getString("Code");
+			ResultSet companyDetails=CompanyManager.getCompanyDetails(code);
+			request.setAttribute("companyDetails", companyDetails );
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
+		
+		try {
+			forward("/EditCompany.jsp", request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void addEditSubmitHandler(HttpServletRequest request, HttpServletResponse response)  {
@@ -61,14 +168,23 @@ public class CompanyController extends HttpServlet {
 	}
 
 	private void SearchCompanyHandler(HttpServletRequest request, HttpServletResponse response) {
-		
+		try {
+			forward("/SearchCompany.jsp",request,response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	private void forward(String url, HttpServletRequest request, HttpServletResponse response)throws ServletException,IOException
-	{
+	private void forward(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		  
 				HttpSession session =request.getSession();
 			 	RequestDispatcher dispatcher =  getServletContext().getRequestDispatcher(url);
-		 		dispatcher.forward(request, response);	 		
+		 		dispatcher.forward(request, response);
+		  		  
 	}
 
 }

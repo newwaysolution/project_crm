@@ -44,9 +44,10 @@
 										<div class="dd_top">
 											<ul class="dd_bottom">
 												<li><a href="CompanyController?action=AddCompany">Add New Company</a></li>
+												<li><a href="CompanyController?action=CompanyList">Company List</a></li>
 												<li><a href="CompanyController?action=SearchCompany">Search Company</a></li>
-												<li><a href="#">Enable Company</a></li>
-												<li><a href="#">Disable Company</a></li>
+												<li><a href="CompanyController?action=EnableDisableCompany">Enable/Disable Company</a></li>
+												<li><a href="#"></a></li>
 												<li><a href="#"></a></li>
 												<li><a href="#"></a></li>
 												<li><a href="#"></a></li>
@@ -64,8 +65,8 @@
 												<li><a href="UserController?action=AddUser">Add New User</a></li>
 												<li><a href="UserController?action=SearchUser">Search User</a></li>
 												<li><a href="UserController?action=ChangePassword">Change Password</a></li>
-												<li><a href="UserController?action=DisableUser">Disable User</a></li>
-												<li><a href="UserController?action=EnableUser">Enable User</a></li>
+												<li><a href="UserController?action=EnableDisableUser">Enable/Disable User</a></li>
+												<li><a href="UserController?action="></a></li>
 												<li><a href="#"></a></li>
 												<li><a href="#"></a></li>	
 											</ul>

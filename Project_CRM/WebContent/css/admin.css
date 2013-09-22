@@ -1168,7 +1168,7 @@ h3 {
 	display: block;
 	width: 13px;
 	height: 13px;
-	text-indent: -3000px;
+	text-indent: -2000px;
 	overflow: hidden;
 	background-repeat: no-repeat;
 }
@@ -1189,6 +1189,18 @@ h3 {
 	background-image:url(layout/move4.gif);
 }
 
+.enable{
+	background-image:url(layout/approved.gif);
+	width: 12px;
+	height:10px;
+}
+
+.disable{
+	background-image:url(layout/action4.gif);
+	width:14px;
+	height:13px;
+}
+
 
 .move_menu {
 	width: 64px;
@@ -1197,7 +1209,7 @@ h3 {
 
 .move_menu ul {
 	margin: 0;
-	padding: 0;
+	padding: 25;
 	float: left;
 	width: 200%;
 }
@@ -1205,7 +1217,7 @@ h3 {
 .move_menu li {
 	float: left;
 	margin: 0;
-	padding: 0 2px 0 0;
+	padding: 0 10px 0 0;
 	list-style: none;
 }
 
@@ -1590,12 +1602,18 @@ h3 {
 	padding: 5px 0 0;
 }
 
+.tooltip p.error{
+	color:red;
+}
+.tooltip p.tip{
+	color:blue;
+}
+
 .tooltip p.first {
 	background:url(layout/arrow_indent.gif) no-repeat;
 	text-indent: 10px;
 	background-position: 0 10px;
-	color:red;
-	font-family:verdana;
+	font-family: 'Freight Sans', 'lucida grande', tahoma, verdana, arial, sans-serif;
 	font-size:13px;
 }
 /* end search */

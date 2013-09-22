@@ -3,6 +3,7 @@
 <%@include file="menu2.jsp" %>
 <!--[if !IE]>start content<![endif]-->
 <head>
+<title>Add new company</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -126,7 +127,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#licenceStartDate").blur(function(){
+	$("#licenseStartDate").blur(function(){
 		if($(this).val()==""){
 			$("#startDateErr").show();
 		}
@@ -135,7 +136,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#licenceEndDate").blur(function(){
+	$("#licenseEndDate").blur(function(){
 		if($(this).val()==""){
 			$("#endDateErr").show();
 		}
