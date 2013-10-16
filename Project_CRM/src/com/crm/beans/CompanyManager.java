@@ -45,36 +45,35 @@ public class CompanyManager {
 	}
 
 	private static String buildWhereClause(HttpServletRequest request) {
-		String wherePart = "";
-		String whereClause = " where 1=1 " + wherePart;
-		if(!request.getParameter("CompanyCode").equalsIgnoreCase("") && request.getParameter("companyCode")!=null){
-			wherePart+=" and Code=" + request.getParameter("companyCode");
+		String wherePart = " where 1=1 ";
+		if(request.getParameter("CompanyCode")!=null && !request.getParameter("CompanyCode").equalsIgnoreCase("")){
+			wherePart+=" and Code=" + request.getParameter("CompanyCode");
 		}
-		if(!request.getParameter("companyName").equalsIgnoreCase("") && request.getParameter("companyName")!=null){
-			wherePart+=" and Name like " + request.getParameter("companyName");
+		if(request.getParameter("CompanyName")!=null && !request.getParameter("CompanyName").equalsIgnoreCase("")){
+			wherePart+=" and Name like " + request.getParameter("CompanyName");
 		}
-		if(!request.getParameter("address1").equalsIgnoreCase("") && request.getParameter("address1")!=null){
+		if(request.getParameter("address1")!=null && !request.getParameter("address1").equalsIgnoreCase("")){
 			wherePart+=" and Address1 like " + request.getParameter("address1");
 		}
-		if(!request.getParameter("address2").equalsIgnoreCase("") && request.getParameter("address2")!=null){
+		if( request.getParameter("address2")!=null && !request.getParameter("address2").equalsIgnoreCase("")){
 			wherePart+=" and Address2 like " + request.getParameter("address2");
 		}
-		if(!request.getParameter("city").equalsIgnoreCase("") && request.getParameter("city")!=null){
+		if(request.getParameter("city")!=null && !request.getParameter("city").equalsIgnoreCase("")){
 			wherePart+=" and City=" + request.getParameter("city");		
 		}
-		if(!request.getParameter("state").equalsIgnoreCase("") && request.getParameter("state")!=null){
+		if(request.getParameter("state")!=null && !request.getParameter("state").equalsIgnoreCase("")){
 			wherePart+=" and State = " + request.getParameter("state");
 		}
-		if(!request.getParameter("zip").equalsIgnoreCase("") && request.getParameter("zip")!=null){
+		if(request.getParameter("zip")!=null && !request.getParameter("zip").equalsIgnoreCase("")){
 			wherePart+=" and Zip = " + request.getParameter("zip");
 		}
-		if(!request.getParameter("licenseStartDate").equalsIgnoreCase("") && request.getParameter("licenseStartDate")!=null){
+		if(request.getParameter("licenseDateFrom")!=null && !request.getParameter("licenseDateFrom").equalsIgnoreCase("")){
 			wherePart+=" and LicenseStartDate >= " + request.getParameter("licenseStartDate");
 		}
-		if(!request.getParameter("licenseEndDate").equalsIgnoreCase("") && request.getParameter("licenseEndDate")!=null){
+		if(request.getParameter("licenseDateTo")!=null && !request.getParameter("licenseDateTo").equalsIgnoreCase("")){
 			wherePart+=" and LicenseEndDate <= " + request.getParameter("licenseEndDate");
 		}
-		return whereClause;
+		return wherePart;
 	}
 
 	public static ResultSet getCompanyDetails(String code) {

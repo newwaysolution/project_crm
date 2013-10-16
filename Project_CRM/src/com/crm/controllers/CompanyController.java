@@ -38,7 +38,8 @@ public class CompanyController extends HttpServlet {
 		if(action.equalsIgnoreCase("AddCompany")) addCompanyHandler(request,response);
 		if(action.equalsIgnoreCase("EditCompany")) editCompanyHandler(request,response);
 		if(action.equalsIgnoreCase("CompanyList")) CompanyListHandler(request,response);
-		if(action.equalsIgnoreCase("CompanyDetails"))CompanyDetailsHandler(request,response);
+		if(action.equalsIgnoreCase("CompanyDetails")) 
+			CompanyDetailsHandler(request,response);
 		if(action.equalsIgnoreCase("AddEditSubmitCompany")) addEditSubmitHandler(request,response);
 		if(action.equalsIgnoreCase("SearchCompany")) SearchCompanyHandler(request,response);
 		if(action.equalsIgnoreCase("CompanySearchResults")) CompanySearchResultsHandler(request,response);
@@ -50,24 +51,16 @@ public class CompanyController extends HttpServlet {
 	private void CompanyDetailsHandler(HttpServletRequest request,
 			HttpServletResponse response){
 		
-		ResultSet companyCode = (ResultSet) request.getAttribute("companyCode");
-		String code;
+		String companyCode = request.getParameter("companyCode");
 		try {
-			code = companyCode.getString("Code");
-			ResultSet companyDetails=CompanyManager.getCompanyDetails(code);
+			ResultSet companyDetails=CompanyManager.getCompanyDetails(companyCode);
 			request.setAttribute("companyDetails", companyDetails);
-		} catch (SQLException e1) {
+			forward("/CompanyDetails.jsp", request, response);
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		try {
-			forward("/CompanyDetails.jsp", request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	
 	}
 
 	private void EnableDisableHandler(HttpServletRequest request,
@@ -169,7 +162,7 @@ public class CompanyController extends HttpServlet {
 
 	private void SearchCompanyHandler(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			forward("/SearchCompany.jsp",request,response);
+			forward("/CompanySearchForm.jsp",request,response);
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

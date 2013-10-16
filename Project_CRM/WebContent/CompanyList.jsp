@@ -78,7 +78,7 @@
 											<td>
 												<div class="actions_menu">
 													<ul>
-														<li><a class="details" href="CompanyController?action=CompanyDetails companyCode=<%=companyList.getString("Code")%>" >Details</a></li>
+														<li><a class="details" href="CompanyController?action=CompanyDetails&companyCode=<%=companyList.getString("Code")%>" >Details</a></li>
 														<li><a class="edit" href="#">Edit</a></li>
 														<li><a class="delete" href="#">Delete</a></li>
 													</ul>

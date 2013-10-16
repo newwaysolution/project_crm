@@ -4,16 +4,9 @@
 <%@include file="menu1.jsp" %>
 <%@include file="menu2.jsp" %>
 <!--[if !IE]>start content<![endif]-->
-<head>
-<title>Company Details</title>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <script>
-  </script>
-</head>
 <%	
 ResultSet companyDetails= (ResultSet)request.getAttribute("companyDetails");
+companyDetails.next();
 %>
 
 <div id="content">
@@ -51,39 +44,39 @@ ResultSet companyDetails= (ResultSet)request.getAttribute("companyDetails");
 					<!--[if !IE]>start row<![endif]-->
 					<div class="row">
 						<label>Company Code:</label>
-						<label> <% companyDetails.getString("Code");%></label>
+						<label> <%= companyDetails.getString("Code")%></label>
 						
 					</div>
 					<div class="row">
 						<label>Company Name:</label>
-						<label> <% companyDetails.getString("Name");%></label>
+						<label> <%= companyDetails.getString("Name")%></label>
 					</div>
 					<!--[if !IE]>end row<![endif]-->
 					
 					<!--[if !IE]>start row<![endif]-->
 					<div class="row">
 						<label>Address1:</label>
-						<label> <% companyDetails.getString("Address1");%></label>
+						<label> <%= companyDetails.getString("Address1")%></label>
 					</div>
 					<div class="row">
 						<label>Address2:</label>
-						<label> <% companyDetails.getString("Address2");%></label>
+						<label> <%= companyDetails.getString("Address2")%></label>
 					</div>
 					<div class="row">
 						<label>City:</label>
-						<label> <% companyDetails.getString("City");%></label>
+						<label> <%= companyDetails.getString("City")%></label>
 					</div>
 					<div class="row">
 						<label>State:</label>
-						<label> <% companyDetails.getString("State");%></label>
+						<label> <%= companyDetails.getString("State")%></label>
 					</div>
 					<div class="row">
 						<label>Zip:</label>
-						<label> <% companyDetails.getString("Zip");%></label>
+						<label> <%= companyDetails.getString("Zip")%></label>
 					</div>
 					<div class="row">
 						<label>License valid <br/>between:</label>
-						<label> <% companyDetails.getString("LicenseStartDate");%> to <% companyDetails.getString("Code");%></label>
+						<label> <%= companyDetails.getString("LicenseStartDate")%> to <%= companyDetails.getString("Code")%></label>
 					</div>
 					
 					
